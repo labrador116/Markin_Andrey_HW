@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="PostgreSQL - ShopBase@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="2.6">
+    <database id="1" name="ShopBase">
+      <object-id>16393</object-id>
+      <visible>1</visible>
+    </database>
+    <database id="2" name="postgres">
+      <object-id>12401</object-id>
+    </database>
+    <schema id="3" parent="1" name="public">
+      <object-id>2200</object-id>
+      <visible>1</visible>
+      <introspection-state-number>546</introspection-state-number>
+      <introspection-timestamp>2016-11-03.22:38:01.594</introspection-timestamp>
+    </schema>
+    <schema id="4" parent="1" name="pg_catalog">
+      <object-id>11</object-id>
+    </schema>
+    <schema id="5" parent="1" name="pg_toast">
+      <object-id>99</object-id>
+    </schema>
+    <schema id="6" parent="1" name="pg_temp_1">
+      <object-id>11848</object-id>
+    </schema>
+    <schema id="7" parent="1" name="pg_toast_temp_1">
+      <object-id>11849</object-id>
+    </schema>
+    <schema id="8" parent="1" name="information_schema">
+      <object-id>12113</object-id>
+    </schema>
+    <sequence id="9" parent="3" name="first_warehouse_id_seq">
+      <object-id>16394</object-id>
+      <state-number>545</state-number>
+    </sequence>
+    <table id="10" parent="3" name="first_warehouse">
+      <object-id>16396</object-id>
+      <state-number>545</state-number>
+    </table>
+    <column id="11" parent="10" name="id">
+      <state-number>545</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+      <default-expression>nextval(&apos;first_warehouse_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="12" parent="10" name="thing_name">
+      <state-number>545</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="13" parent="10" name="model">
+      <state-number>545</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <index id="14" parent="10" name="first_warehouse_id_uindex">
+      <object-id>16402</object-id>
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="15" parent="10" name="first_warehouse_pkey">
+      <object-id>16400</object-id>
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="16" parent="10" name="first_warehouse_pkey">
+      <object-id>16401</object-id>
+      <columns>id</columns>
+      <underlying-index>first_warehouse_pkey</underlying-index>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
