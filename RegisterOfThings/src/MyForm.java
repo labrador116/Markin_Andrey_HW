@@ -1,9 +1,7 @@
-import logics.IConnect;
-import logics.IRequests;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * Created by Andrey_pers on 01.11.2016.
@@ -27,16 +25,13 @@ public class MyForm extends JFrame {
         addWarehouse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 AddWarehouse newAdd=new AddWarehouse();
-
             }
         });
 
         delWarehouse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 delWarehouse newDel = new delWarehouse();
             }
         });
@@ -45,6 +40,32 @@ public class MyForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addThing newAdd=new addThing();
+            }
+        });
+
+        delThing.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                delThing newDel = new delThing();
+            }
+        });
+
+        getListThings.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               List<String> things= ExecutableClass.getThings();
+                workSpace.setText(null);
+
+                for (String thing : things) {
+                    workSpace.append(thing +"\n");
+                }
+            }
+        });
+
+        findThings.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                findThing findtForm = new findThing();
             }
         });
     }

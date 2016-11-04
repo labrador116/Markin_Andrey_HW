@@ -11,8 +11,8 @@
     <schema id="3" parent="1" name="public">
       <object-id>2200</object-id>
       <visible>1</visible>
-      <introspection-state-number>546</introspection-state-number>
-      <introspection-timestamp>2016-11-03.22:38:01.594</introspection-timestamp>
+      <introspection-state-number>613</introspection-state-number>
+      <introspection-timestamp>2016-11-03.23:45:33.361</introspection-timestamp>
     </schema>
     <schema id="4" parent="1" name="pg_catalog">
       <object-id>11</object-id>
@@ -33,42 +33,78 @@
       <object-id>16394</object-id>
       <state-number>545</state-number>
     </sequence>
-    <table id="10" parent="3" name="first_warehouse">
+    <sequence id="10" parent="3" name="new_id_seq">
+      <object-id>16586</object-id>
+      <state-number>613</state-number>
+    </sequence>
+    <table id="11" parent="3" name="first_warehouse">
       <object-id>16396</object-id>
       <state-number>545</state-number>
     </table>
-    <column id="11" parent="10" name="id">
+    <table id="12" parent="3" name="new">
+      <object-id>16588</object-id>
+      <state-number>613</state-number>
+    </table>
+    <column id="13" parent="11" name="id">
       <state-number>545</state-number>
       <mandatory>1</mandatory>
       <data-type>integer|0</data-type>
       <default-expression>nextval(&apos;first_warehouse_id_seq&apos;::regclass)</default-expression>
     </column>
-    <column id="12" parent="10" name="thing_name">
+    <column id="14" parent="11" name="thing_name">
       <state-number>545</state-number>
       <mandatory>1</mandatory>
       <data-type>varchar(30)|0</data-type>
     </column>
-    <column id="13" parent="10" name="model">
+    <column id="15" parent="11" name="model">
       <state-number>545</state-number>
       <mandatory>1</mandatory>
       <data-type>varchar(30)|0</data-type>
     </column>
-    <index id="14" parent="10" name="first_warehouse_id_uindex">
+    <index id="16" parent="11" name="first_warehouse_id_uindex">
       <object-id>16402</object-id>
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <index id="15" parent="10" name="first_warehouse_pkey">
+    <index id="17" parent="11" name="first_warehouse_pkey">
       <object-id>16400</object-id>
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="16" parent="10" name="first_warehouse_pkey">
+    <key id="18" parent="11" name="first_warehouse_pkey">
       <object-id>16401</object-id>
       <columns>id</columns>
       <underlying-index>first_warehouse_pkey</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="19" parent="12" name="id">
+      <state-number>613</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+      <default-expression>nextval(&apos;new_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="20" parent="12" name="thing_name">
+      <state-number>613</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="21" parent="12" name="model">
+      <state-number>613</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <index id="22" parent="12" name="new_pkey">
+      <object-id>16592</object-id>
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="23" parent="12" name="new_pkey">
+      <object-id>16593</object-id>
+      <columns>id</columns>
+      <underlying-index>new_pkey</underlying-index>
       <primary>1</primary>
     </key>
   </database-model>

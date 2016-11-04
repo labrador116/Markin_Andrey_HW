@@ -13,5 +13,7 @@ public interface IRequests {
     public void deleteThing (String warehouseName, String thingName, String thingModel);
     List<String> getWarehouses();
     public List<String> getThings ();
-    public void findThing(String nameThing, String nameWarehouse);
+    public List<String> getThings (String nameWarehouse);
+    public List<String> getModel(String nameWarehouse, String nameThing);
+    public List<String> findThing(String nameThing);
 }

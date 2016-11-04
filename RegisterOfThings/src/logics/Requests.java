@@ -125,26 +125,85 @@ public class Requests implements IRequests{
                             +"Модель: "+result.getString("model")
                     );
                 }
-                return finalResult;
             }
+            return finalResult;
         } catch (SQLException e) {
             e.printStackTrace();
-
+            return null;
         }
-        return finalResult;
     }
 
-    public void findThing(String nameThing, String nameWarehouse){
+    public List<String> getThings (String nameWarehouse){
         try {
+            List<String> finalResult = new ArrayList<>();
             Statement statement = connection.createStatement();
-            ResultSet resultSet= statement.executeQuery("SELECT * FROM "+ nameWarehouse + " WHERE thing_name="+"'"+nameThing+"'");
-            while (resultSet.next()) {
-                System.out.println("Товар: " +resultSet.getString("thing_name") +"\t"
-                + "Модель "+resultSet.getString("model")
-                );
+            ResultSet result = statement.executeQuery("SELECT * FROM "+nameWarehouse);
+
+            while (result.next()){
+                finalResult.add(result.getString("thing_name"));
             }
+
+            return finalResult;
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<String> getModel(String nameWarehouse, String nameThing){
+        List<String> finalResult = new ArrayList<>();
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT model FROM "+nameWarehouse +" WHERE ("+"thing_name"+" ='"+nameThing+"' )");
+
+            while (result.next()){
+                finalResult.add(result.getString("model"));
+            }
+
+            return finalResult;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public List<String> findThing(String nameThing){
+        List<String> finalResult = new ArrayList<String>();
+        try {
+            Statement statement = connection.createStatement();
+
+            DatabaseMetaData meta= connection.getMetaData();
+            ResultSet resultSet = meta.getTables(null, "public", null, null);
+            resultSet.last();
+            String[] tablesName= new String[resultSet.getRow()];
+            resultSet.beforeFirst();
+
+            int counter = 0;
+            while (resultSet.next()) {
+                tablesName[counter]=resultSet.getString("TABLE_NAME");
+                counter++;
+            }
+
+
+
+
+            List<String> checkedNames = checkTable(tablesName);
+
+            for(int i=0;i<checkedNames.size();i++) {
+                resultSet = statement.executeQuery("SELECT * FROM " + checkedNames.get(i) + " WHERE ( thing_name = '" + nameThing + "' )");
+
+                while (resultSet.next()) {
+                    finalResult.add("Товар: " + resultSet.getString("thing_name") + "\t"
+                            + "Модель " + resultSet.getString("model")
+                    );
+                }
+            }
+            return finalResult;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
