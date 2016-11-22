@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="HW_Spring_BD:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="HW_Spring_BD.war">
-      <element id="artifact" artifact-name="HW_Spring_BD:war exploded" />
-    </root>
-  </artifact>
-</component>
